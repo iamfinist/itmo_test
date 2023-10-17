@@ -1,0 +1,2 @@
+## Запуск:
+bash start.sh
