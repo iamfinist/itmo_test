@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Create book</h1>
+<a href="{{ path('author_index') }}">
+    Back
+</a>
+{{ include('author/_form.html.twig', {form: form}) }}
+{% endblock %}

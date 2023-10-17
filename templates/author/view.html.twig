@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>View author {{ author }}</h1>
+    <a href="{{ path('author_index') }}">
+        Back
+    </a>
+    <br>
+    <table>
+        <tbody>
+            <tr>
+                <td>Middle name</td>
+                <td>{{ author.middleName }}</td>
+            </tr>
+            <tr>
+                <td>First name</td>
+                <td>{{ author.firstName }}</td>
+            </tr>
+            <tr>
+                <td>Last name</td>
+                <td>{{ author.lastName }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Books:</h2>
+    {% if author.books is not empty %}
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Publication year</th>
+                <th>ISBN</th>
+                <th>Pages count</th>
+                <th colspan="2">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for book in author.books %}
+                <tr>
+                    <td>{{ book }}</td>
+                    <td>{{ book.publicationYear }}</td>
+                    <td>{{ book.isbn }}</td>
+                    <td>{{ book.pagesCount }}</td>
+                    <td>
+                        <a href="{{ path('book_view', {id: book.id}) }}">
+                            View
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('book_update', {id: book.id}) }}">
+                            Update
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('book_delete', {id: book.id}) }}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <span>No results found</span>
+    {% endif %}
+{% endblock %}

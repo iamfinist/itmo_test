@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>All books</h1>
+    <a href="{{ path('book_create') }}">
+        New book
+    </a>
+    {% if books is not empty %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Publication year</th>
+                    <th>ISBN</th>
+                    <th>Pages count</th>
+                    <th colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book }}</td>
+                    <td>{{ book.publicationYear }}</td>
+                    <td>{{ book.isbn }}</td>
+                    <td>{{ book.pagesCount }}</td>
+                    <td>
+                        <a href="{{ path('book_view', {id: book.id}) }}">
+                            View
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('book_update', {id: book.id}) }}">
+                            Update
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('book_delete', {id: book.id}) }}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <br>
+        <span>No results found.</span>
+    {% endif %}
+{% endblock %}

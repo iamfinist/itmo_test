@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>All authors</h1>
+    <a href="{{ path('author_create') }}">
+        New author
+    </a>
+    {% if authors is not empty %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td>{{ author }}</td>
+                    <td>
+                        <a href="{{ path('author_view', {id: author.id}) }}">
+                            View
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('author_update', {id: author.id}) }}">
+                            Update
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('author_delete', {id: author.id}) }}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <br>
+        <span>No results found.</span>
+    {% endif %}
+{% endblock %}

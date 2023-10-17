@@ -2,14 +2,32 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Library{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {% block stylesheets %}
         {% endblock %}
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            a {
+                color: blue;
+                text-decoration: none;
+            }
+        </style>
 
         {% block javascripts %}
         {% endblock %}
     </head>
+    <nav>
+        <a href="{{ path('author_index') }}">
+            Authors
+        </a>
+        <a href="{{ path('book_index') }}">
+            Books
+        </a>
+    </nav>
     <body>
         {% block body %}{% endblock %}
     </body>
